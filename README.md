@@ -41,14 +41,51 @@ A Synchronous counter is the counter in which the clock input with all the flip-
 
 
 ## Program:
+## UP counter:
+```py
+module upcounter(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always@(posedge clk)
+begin
+q4=(q1&q2&q3)^q4;
+q3=(q1&q2)^q3;
+q2=q1^q2;
+q1=1^q1;
+end
+endmodule
+```
+## Down counter:
+```py
+module downcounter(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always@(posedge clk)
+begin
+q4=((~q3)&(~q2)&(~q1))^q4;
+q3=((~q2)&(~q1))^q3;
+q2=(~q1)^q2;
+q1=1^q1;
+end
+endmodule
+```
 
 
 ## RTL Schematic:
+## Up conter:
+![image](https://github.com/kanishka2305/Counter/assets/113497357/6d45e784-53d0-41c2-94fe-ff7cb8131713)
+## Down counter:
+![image](https://github.com/kanishka2305/Counter/assets/113497357/76497774-409a-4e49-bf21-2dcf3d83e476)
+
 
 
 
 
 ## Timing Diagram:
+## Up counter:
+![image](https://github.com/kanishka2305/Counter/assets/113497357/43e27fed-de0d-48fd-b103-9ed2d93dc497)
+## Down counter:
+![image](https://github.com/kanishka2305/Counter/assets/113497357/ede648d7-da0c-44b7-9d18-4ce3d2ba09f4)
 
 
 
